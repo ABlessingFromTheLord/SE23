@@ -49,13 +49,12 @@ public class Main {
 
             // Version 4
             if (c == 'y' || c == 'Y'){
-                System.out.println("Please put two seed values seperated by space: ");
+                System.out.println("Please put two seed values, seperated by space: ");
                 int temp1 = sc.nextInt() + randTemp;
                 int temp2 = sc.nextInt() + randTemp^2;
-
-                System.out.println("Random numbers: " + Math.abs(ADT.getActualRandom1(temp1)) + ", " + Math.abs(ADT.getActualRandom2(temp2)));
+                actualRandom = Math.abs(ADT.getActualRandom1(temp1));
+                System.out.println("Random numbers: " +  actualRandom + ", " + Math.abs(ADT.getActualRandom2(temp2)));
                 executed = true;
-
             }
 
             else{ break; }
