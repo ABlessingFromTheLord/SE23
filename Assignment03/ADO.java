@@ -1,4 +1,5 @@
 package Assignment03;
+import java.util.Date;
 
 public class ADO {
     // Fields
@@ -6,17 +7,15 @@ public class ADO {
     private static int factor = 623;
     private static int increment = 525;
     private static int start = 157;
-    private static int actualRandom = ((factor * start) + increment) % max;
+
+    // Constructor
+    public ADO(){
+
+    }
 
 
     // Methods
-    public static <actualRandom> int getActualRandom(int actualRandom){
-        actualRandom = (((factor * actualRandom) + increment) % max);
-        return actualRandom;
-    }
-
-    public static int getPredefinedRandom(){
-        actualRandom = (((factor * actualRandom) + increment) % max);
-        return actualRandom;
+    public static <actualRandom> int getActualRandom(int seed){
+        return (((factor * seed) + increment) % max);
     }
 }
