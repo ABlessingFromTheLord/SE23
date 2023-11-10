@@ -12,11 +12,16 @@ public class Room {
     }
 
     // Methods
+    // Getters
+    public String getName(){
+        return this.name;
+    }
+
     public void enter(){
         System.out.println("You are in the " + this.name);
     }
 
     public void switchLight(){
-
+        lighting = !lighting;
     }
 }
