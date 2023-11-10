@@ -61,6 +61,22 @@ public class Apartment {
     public void readAction(){
         while(true){
             int input = sc.nextInt();
+
+        if(this.currentRoom.getName().equals("LivingRoom")){
+            // Actions for living room
+
+        }
+        else if (this.currentRoom.getName().equals("Kitchen")) {
+            // Actions for kitchen
+
+        }
+        else if (this.currentRoom.getName().equals("Bathroom")) {
+            // Actions for  Bathroom
+
+        }
+        else
+        {
+            // Actions for normal room
             if(input == 1){
                 this.currentRoom.switchLight();
                 this.currentRoom.enter();
@@ -75,6 +91,8 @@ public class Apartment {
             else {
                 break;
             }
+        }
+
         }
     }
 
