@@ -1,12 +1,14 @@
 package Assignment04;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Apartment {
     // Fields
     private String apartmentName;
     private Stack<Room> tour;
+    private Scanner sc;
     private Room currentRoom;
     private ArrayList<Room> rooms;
 
@@ -15,6 +17,7 @@ public class Apartment {
         this.apartmentName = Name;
         rooms = new ArrayList<>();
         tour = new Stack<>();
+        sc = new Scanner(System.in);
 
         // Begin in hallway
         Room entrance = new Room("Hallway", false);
@@ -33,6 +36,7 @@ public class Apartment {
 
     public void enter(){
         currentRoom.enter();
+        this.readAction();
     }
 
     public void leaveRoom(){
@@ -44,6 +48,19 @@ public class Apartment {
 
     public void addNewRoom(Room room){
         rooms.add(room);
+    }
+
+    public void readAction(){
+        if(sc.nextInt() == 1){
+            this.currentRoom.switchLight();
+        }
+        else if (sc.nextInt() == 2) {
+            System.out.println("\n Choose from neighbors: ");
+            this.currentRoom.printNeighbors();
+        }
+        else if (sc.nextInt() == 3) {
+            this.leaveRoom();
+        }
     }
 
 }

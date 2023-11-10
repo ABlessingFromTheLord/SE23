@@ -1,21 +1,21 @@
 package Assignment04;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Room {
     // Fields
     private String name;
     private boolean lighting;
-    private Scanner sc;
     Iterable<String> actions;
+    private ArrayList<Room> neighbors;
 
     // Constructor
     public Room(String Name, boolean Lighting){
         this.name = Name;
         this.lighting = Lighting;
 
-        sc = new Scanner(System.in);
+        neighbors = new ArrayList<>();
         this.init();
     }
 
@@ -23,6 +23,15 @@ public class Room {
     // Getters
     public String getName(){
         return this.name;
+    }
+
+    // Setters
+    public void setNeighbors(Room room){
+        this.neighbors.add(room);
+
+        if(!room.neighbors.contains(this)){
+            room.neighbors.add(this);
+        }
     }
 
     public void init(){
@@ -46,11 +55,23 @@ public class Room {
 
     public void switchLight(){
         lighting = !lighting;
+        if (lighting){
+            System.out.println("Light in the " + this.getName() + " is on \n");
+        }
+        else {
+            System.out.println("Light in the " + this.getName() + " is off \n");
+        }
+
+        this.enter();
     }
 
-    public void readAction(){
-        if(sc.nextInt() == 0){
+    public void printNeighbors(){
+        int i = 1;
 
+        for (Room r: this.neighbors
+        ) {
+            System.out.println(i + " for " + r.getName());
+            i++;
         }
     }
 }
