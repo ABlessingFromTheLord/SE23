@@ -40,10 +40,16 @@ public class Apartment {
     }
 
     public void leaveRoom(){
+
         System.out.println("You left the " + currentRoom.getName());
         tour.pop();
-        currentRoom = tour.peek();
-        this.enter();
+        if (tour.empty()){
+            System.out.println("You left the apartment");
+        }
+        else {
+            currentRoom = tour.peek();
+            this.enter();
+        }
     }
 
     public void addNewRoom(Room room){
