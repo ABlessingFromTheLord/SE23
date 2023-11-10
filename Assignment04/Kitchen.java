@@ -12,6 +12,6 @@ public class Kitchen {
     }
 
     public void switchStove(){
-        
+
     }
 }
