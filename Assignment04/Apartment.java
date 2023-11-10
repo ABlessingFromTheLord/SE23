@@ -19,12 +19,6 @@ public class Apartment {
         tour = new Stack<>();
         sc = new Scanner(System.in);
 
-        // Begin in hallway
-        Room entrance = new Room("Hallway", false);
-        rooms.add(entrance);
-        currentRoom = entrance;
-        tour.push(entrance);
-
         System.out.println("Welcome to " +  this.getApartmentName() + " apartment!");
     }
 
@@ -35,6 +29,14 @@ public class Apartment {
     }
 
     public void enter(){
+        // Begin in hallway
+        for (Room r: this.rooms) {
+            if (r.getName().equals("Hallway")){
+                currentRoom = r;
+                tour.push(r);
+            }
+        }
+
         currentRoom.enter();
         this.readAction();
     }
@@ -53,20 +55,21 @@ public class Apartment {
     }
 
     public void addNewRoom(Room room){
-        rooms.add(room);
+        this.rooms.add(room);
     }
 
     public void readAction(){
         while(true){
-            if(sc.nextInt() == 1){
+            int input = sc.nextInt();
+            if(input == 1){
                 this.currentRoom.switchLight();
                 this.currentRoom.enter();
             }
-            else if (sc.nextInt() == 2) {
+            else if (input == 2) {
                 System.out.println("\n Choose from neighbors: ");
                 this.currentRoom.printNeighbors();
             }
-            else if (sc.nextInt() == 3) {
+            else if (input == 3) {
                 this.leaveRoom();
             }
             else {

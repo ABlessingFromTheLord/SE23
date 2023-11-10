@@ -66,8 +66,7 @@ public class Room {
     public void printNeighbors(){
         int i = 1;
 
-        for (Room r: this.neighbors
-        ) {
+        for (Room r: this.neighbors) {
             System.out.println(i + " for " + r.getName());
             i++;
         }
