@@ -61,8 +61,6 @@ public class Room {
         else {
             System.out.println("Light in the " + this.getName() + " is off \n");
         }
-
-        this.enter();
     }
 
     public void printNeighbors(){

@@ -40,7 +40,7 @@ public class Apartment {
     }
 
     public void leaveRoom(){
-        System.out.println("You left the " +currentRoom.getName());
+        System.out.println("You left the " + currentRoom.getName());
         tour.pop();
         currentRoom = tour.peek();
         this.enter();
@@ -51,15 +51,21 @@ public class Apartment {
     }
 
     public void readAction(){
-        if(sc.nextInt() == 1){
-            this.currentRoom.switchLight();
-        }
-        else if (sc.nextInt() == 2) {
-            System.out.println("\n Choose from neighbors: ");
-            this.currentRoom.printNeighbors();
-        }
-        else if (sc.nextInt() == 3) {
-            this.leaveRoom();
+        while(true){
+            if(sc.nextInt() == 1){
+                this.currentRoom.switchLight();
+                this.currentRoom.enter();
+            }
+            else if (sc.nextInt() == 2) {
+                System.out.println("\n Choose from neighbors: ");
+                this.currentRoom.printNeighbors();
+            }
+            else if (sc.nextInt() == 3) {
+                this.leaveRoom();
+            }
+            else {
+                break;
+            }
         }
     }
 
