@@ -13,7 +13,7 @@ public class Room {
 
     // Methods
     public void enter(){
-
+        System.out.println("You are in the " + this.name);
     }
 
     public void switchLight(){
