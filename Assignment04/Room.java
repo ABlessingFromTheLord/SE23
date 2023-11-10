@@ -6,7 +6,10 @@ public class Room {
     private boolean lighting;
 
     // Constructor
-
+    public Room(String Name, boolean Lighting){
+        this.name = Name;
+        this.lighting = Lighting;
+    }
 
     // Methods
     public void enter(){

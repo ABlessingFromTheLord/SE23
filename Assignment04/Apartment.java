@@ -7,6 +7,9 @@ public class Apartment {
     private ArrayList<Room> rooms;
 
     // Constructor
+    public Apartment(){
+        rooms = new ArrayList<>();
+    }
 
     // Methods
     public void enter(){
