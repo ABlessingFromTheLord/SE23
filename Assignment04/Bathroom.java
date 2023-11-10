@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Bathroom extends Room{
     // Fields
+    private boolean shower;
     private ArrayList<Room> neighbors;
 
     // Constructor
@@ -14,11 +15,8 @@ public class Bathroom extends Room{
     }
 
     // Methods
-    public boolean shower(){
-    return false;
-    }
 
     public void switchShower(){
-
+        shower = !shower;
     }
 }
