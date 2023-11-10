@@ -12,6 +12,7 @@ public class Apartment {
 
     // Constructor
     public Apartment(String Name){
+        this.apartmentName = Name;
         rooms = new ArrayList<>();
         tour = new Stack<>();
 
@@ -21,7 +22,7 @@ public class Apartment {
         currentRoom = entrance;
         tour.push(entrance);
 
-        System.out.println("Welcome to" +  this.getApartmentName() + " apartment");
+        System.out.println("Welcome to " +  this.getApartmentName() + " apartment!");
     }
 
     // Methods
@@ -31,8 +32,7 @@ public class Apartment {
     }
 
     public void enter(){
-        System.out.println("You are in the " + currentRoom);
-        System.out.println("Choose an action: ");
+        currentRoom.enter();
     }
 
     public void leaveRoom(){

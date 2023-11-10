@@ -34,12 +34,13 @@ public class Room {
     }
 
     public void enter(){
-        System.out.println("You are in the " + this.name);
-        System.out.println("Choose action from the following");
+        System.out.println("You are in the " + this.name + "\n");
+        System.out.println("Choose action from the following actions: ");
 
-        int i = 0;
+        int i = 1;
         for (String s: actions){
-            System.out.println(i + " " + s);
+            System.out.println(i + " for " + s);
+            i++;
         }
     }
 
