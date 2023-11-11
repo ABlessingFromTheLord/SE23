@@ -18,6 +18,10 @@ public class LivingRoom extends Room{
     }
 
     // Methods
+    public boolean getTV(){
+        return this.tv;
+    }
+
     public void init(){
         String[] actionsArray = new String[5];
         actionsArray[0] = "Switch TV";

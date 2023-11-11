@@ -20,6 +20,10 @@ public class Kitchen extends Room{
     }
 
     // Methods
+    public boolean getStove(){
+        return this.stove;
+    }
+
     public void init(){
         String[] actionsArray = new String[4];
         actionsArray[0] = "Switch Light";

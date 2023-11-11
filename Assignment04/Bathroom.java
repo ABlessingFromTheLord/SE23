@@ -18,6 +18,10 @@ public class Bathroom extends Room{
     }
 
     // Methods
+    public boolean getShower(){
+        return this.shower;
+    }
+
     public void init(){
         String[] actionsArray = new String[4];
         actionsArray[0] = "Switch Light";

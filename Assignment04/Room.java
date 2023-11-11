@@ -21,6 +21,10 @@ public class Room {
 
     // Methods
     // Getters
+    public boolean getLighting(){
+        return this.lighting;
+    }
+
     public String getName(){
         return this.name;
     }
