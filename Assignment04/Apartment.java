@@ -22,7 +22,7 @@ public class Apartment {
         sc = new Scanner(System.in);
 
         System.out.println("Welcome to " +  this.getApartmentName() + " apartment!");
-        System.out.println("\nHINT: The unique thing in this apartment is the home theater system");
+        System.out.println("HINT: The unique thing in this apartment is the home theater system\n");
     }
 
     // Methods

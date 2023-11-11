@@ -1,5 +1,6 @@
 package Assignment04;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,17 +45,19 @@ public class Kitchen extends Room{
         stove = !stove;
 
         if(stove){
-            System.out.println("Stove switched on");
+            System.out.println("Stove switched on\n");
             this.startTime = System.currentTimeMillis();
         }
         else{
-            System.out.println("Stove switched off \n" + this.calcEnergy() + " Watts were consumed by stove");
+            System.out.println("Stove switched off \n" + this.calcEnergy() + " Watts were consumed by stove\n");
         }
     }
 
     public double calcEnergy(){
         long endTime = System.currentTimeMillis() * 1000000;
+        DecimalFormat df = new DecimalFormat("#.##");
         double duration = (endTime - this.startTime) / 3.6; // to get hours
+        duration = Double.parseDouble(df.format(duration));
         return (2000 * duration);
     }
 }
