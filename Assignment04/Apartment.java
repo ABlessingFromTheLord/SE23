@@ -56,7 +56,7 @@ public class Apartment {
         // Check if all room conditions are safe
         this.checkRoom(this.currentRoom);
 
-        System.out.println("You left the " + currentRoom.getName());
+        System.out.println("You left the " + currentRoom.getName() + "\n");
         tour.pop();
 
         if (tour.empty()){

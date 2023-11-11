@@ -86,7 +86,7 @@ public class Room {
 
     public void notifier(){
         if (this.getLighting()){
-            System.out.println("Light is till on in the " + this.getName());
+            System.out.println("Light is till on in the " + this.getName() + " cannot leave apartment");
         }
     }
 }
