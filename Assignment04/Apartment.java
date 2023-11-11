@@ -71,7 +71,7 @@ public class Apartment {
                     this.currentRoom.switchLight();
                 }
                 else if (input == 3) {
-                    ((LivingRoom) this.currentRoom).playHomeTheaterMusic();
+                    ((LivingRoom) this.currentRoom).playHomeTheaterSystem();
                 }
 
                 else if (input == 4) {
@@ -107,9 +107,25 @@ public class Apartment {
                 }
 
             }
-            else if (this.currentRoom.getName().equals("Bathroom")) {
-                // Actions for  Bathroom
 
+            else if ((this.currentRoom instanceof Room) && (this.currentRoom instanceof Bathroom)) {
+                // Actions for  Bathroom
+                if(input == 1){
+                    this.currentRoom.switchLight();
+                }
+                else if (input == 2) {
+                    ((Bathroom) this.currentRoom).switchShower();
+                }
+                else if (input == 3) {
+                    System.out.println("\n Choose from neighbors: ");
+                    this.currentRoom.printNeighbors();
+                }
+                else if (input == 4) {
+                    this.leaveRoom();
+                }
+                else{
+                    break;
+                }
             }
             else
             {

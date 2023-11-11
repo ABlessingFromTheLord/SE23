@@ -37,8 +37,8 @@ public class Room {
     public void init(){
         String[] actionsArray = new String[3];
         actionsArray[0] = "Switch Light";
-        actionsArray[1] = "Enter neighboring room";
-        actionsArray[2] = "Leave room";
+        actionsArray[1] = "Enter Neighboring Room";
+        actionsArray[2] = "Leave Room";
         actions = Arrays.asList(actionsArray);
     }
 

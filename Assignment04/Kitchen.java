@@ -20,11 +20,11 @@ public class Kitchen extends Room{
 
     // Methods
     public void init(){
-        String[] actionsArray = new String[3];
+        String[] actionsArray = new String[4];
         actionsArray[0] = "Switch Light";
         actionsArray[1] = "Switch Stove";
-        actionsArray[2] = "Enter neighboring room";
-        actionsArray[3] = "Leave room";
+        actionsArray[2] = "Enter Neighboring Room";
+        actionsArray[3] = "Leave Room";
         actions = Arrays.asList(actionsArray);
     }
 
