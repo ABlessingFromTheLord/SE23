@@ -9,6 +9,7 @@ public class Apartment {
     private String apartmentName;
     private Stack<Room> tour;
     private boolean inApartment = true;
+    private boolean chooseRooms= false;
     private Scanner sc;
     private Room currentRoom;
     private ArrayList<Room> rooms;
@@ -67,26 +68,34 @@ public class Apartment {
 
             if((this.currentRoom instanceof Room) && (this.currentRoom instanceof LivingRoom)) {
                 // Actions for living room
-                if(input == 1){
-                    ((LivingRoom) this.currentRoom).switchTV();
-                }
-                else if (input == 2) {
-                    this.currentRoom.switchLight();
-                }
-                else if (input == 3) {
-                    ((LivingRoom) this.currentRoom).playHomeTheaterSystem();
-                }
+                if(!chooseRooms)
+                {
+                    if(input == 1){
+                        ((LivingRoom) this.currentRoom).switchTV();
+                    }
+                    else if (input == 2) {
+                        this.currentRoom.switchLight();
+                    }
+                    else if (input == 3) {
+                        ((LivingRoom) this.currentRoom).playHomeTheaterSystem();
+                    }
 
-                else if (input == 4) {
-                    System.out.println("\n Choose from neighbors: ");
-                    this.currentRoom.printNeighbors();
-                }
-                else if (input == 5) {
-                    this.leaveRoom();
+                    else if (input == 4) {
+                        System.out.println("\n Choose from neighbors: ");
+                        chooseRooms = true;
+                        this.currentRoom.printNeighbors();
+                        this.readAction();
+                    }
+                    else if (input == 5) {
+                        this.leaveRoom();
+                    }
+                    else {
+                        System.out.println("Invalid input, please choose a number listed below");
+                        this.readAction();
+                    }
                 }
                 else {
-                    System.out.println("Invalid input, please choose a number listed below");
-                    this.readAction();
+
                 }
 
 
@@ -103,6 +112,7 @@ public class Apartment {
                 else if (input == 3) {
                     System.out.println("\n Choose from neighbors: ");
                     this.currentRoom.printNeighbors();
+                    this.readAction();
                 }
                 else if (input == 4) {
                     this.leaveRoom();
@@ -125,6 +135,7 @@ public class Apartment {
                 else if (input == 3) {
                     System.out.println("\n Choose from neighbors: ");
                     this.currentRoom.printNeighbors();
+                    this.readAction();
                 }
                 else if (input == 4) {
                     this.leaveRoom();
@@ -144,6 +155,7 @@ public class Apartment {
                 else if (input == 2) {
                     System.out.println("\n Choose from neighbors: ");
                     this.currentRoom.printNeighbors();
+                    this.readAction();
                 }
                 else if (input == 3) {
                     this.leaveRoom();
@@ -153,7 +165,6 @@ public class Apartment {
                     this.readAction();
                 }
             }
-            break;
         }
     }
 
