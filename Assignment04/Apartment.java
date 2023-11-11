@@ -65,33 +65,45 @@ public class Apartment {
             if((this.currentRoom instanceof Room) && (this.currentRoom instanceof LivingRoom)) {
                 // Actions for living room
                 if(input == 1){
-                    if(input == 1){
-                        ((LivingRoom) this.currentRoom).switchTV();
-                    }
-                    else if (input == 2) {
-                        this.currentRoom.switchLight();
-                    }
-                    else if (input == 3) {
-                        ((LivingRoom) this.currentRoom).playHomeTheaterMusic();
-                    }
-
-                    else if (input == 4) {
-                        System.out.println("\n Choose from neighbors: ");
-                        this.currentRoom.printNeighbors();
-                    }
-                    else if (input == 5) {
-                        this.leaveRoom();
-                    }
-                    else {
-                        break;
-                    }
-
+                    ((LivingRoom) this.currentRoom).switchTV();
                 }
+                else if (input == 2) {
+                    this.currentRoom.switchLight();
+                }
+                else if (input == 3) {
+                    ((LivingRoom) this.currentRoom).playHomeTheaterMusic();
+                }
+
+                else if (input == 4) {
+                    System.out.println("\n Choose from neighbors: ");
+                    this.currentRoom.printNeighbors();
+                }
+                else if (input == 5) {
+                    this.leaveRoom();
+                }
+                else {
+                    break;
+                }
+
             }
-            else if (this.currentRoom.getName().equals("Kitchen")) {
+
+            else if ((this.currentRoom instanceof Room) && (this.currentRoom instanceof Kitchen)) {
                 // Actions for kitchen
                 if(input == 1){
-                    ((Kitchen)this.currentRoom.
+                    this.currentRoom.switchLight();
+                }
+                else if (input == 2) {
+                    ((Kitchen) this.currentRoom).switchStove();
+                }
+                else if (input == 3) {
+                    System.out.println("\n Choose from neighbors: ");
+                    this.currentRoom.printNeighbors();
+                }
+                else if (input == 4) {
+                    this.leaveRoom();
+                }
+                else{
+                    break;
                 }
 
             }

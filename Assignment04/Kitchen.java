@@ -1,11 +1,13 @@
 package Assignment04;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Kitchen extends Room{
     // Fields
     private boolean stove;
     private ArrayList<Room> neighbors;
+    Iterable<String> actions;
     private long startTime;
 
     // Constructor
@@ -13,9 +15,19 @@ public class Kitchen extends Room{
         super(Name, Lighting);
 
         neighbors = new ArrayList<>();
+        this.init();
     }
 
     // Methods
+    public void init(){
+        String[] actionsArray = new String[3];
+        actionsArray[0] = "Switch Light";
+        actionsArray[1] = "Switch Stove";
+        actionsArray[2] = "Enter neighboring room";
+        actionsArray[3] = "Leave room";
+        actions = Arrays.asList(actionsArray);
+    }
+
     public void switchStove(){
         stove = !stove;
 
