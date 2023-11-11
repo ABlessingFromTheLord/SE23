@@ -28,7 +28,7 @@ public class Apartment {
         return this.apartmentName;
     }
 
-    public void enter(){
+    public void enter() throws InterruptedException {
         // Begin in hallway
         for (Room r: this.rooms) {
             if (r.getName().equals("Hallway")){
@@ -41,7 +41,7 @@ public class Apartment {
         this.readAction();
     }
 
-    public void leaveRoom(){
+    public void leaveRoom() throws InterruptedException {
 
         System.out.println("You left the " + currentRoom.getName());
         tour.pop();
