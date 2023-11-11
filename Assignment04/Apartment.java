@@ -9,7 +9,8 @@ public class Apartment {
     private String apartmentName;
     private Stack<Room> tour;
     private boolean inApartment = true;
-    private boolean chooseRooms= false;
+    private boolean chooseRooms = false;
+    private ArrayList<Room> roomChecks;
     private Scanner sc;
     private Room currentRoom;
     private ArrayList<Room> rooms;
@@ -19,6 +20,7 @@ public class Apartment {
         this.apartmentName = Name;
         rooms = new ArrayList<>();
         tour = new Stack<>();
+        roomChecks = new ArrayList<>();
         sc = new Scanner(System.in);
 
         System.out.println("Welcome to " +  this.getApartmentName() + " apartment!");
@@ -60,6 +62,9 @@ public class Apartment {
             inApartment = false;
         }
         else {
+            // Check if all room conditions are safe
+
+
             currentRoom = tour.peek();
             this.enter();
         }
@@ -202,6 +207,50 @@ public class Apartment {
                 }
             }
         }
+    }
+
+    public boolean checkRoom(Room room){
+        boolean isOn = false;
+
+        if((room instanceof Room)&&(room instanceof LivingRoom)){
+            // checks for living room
+            if(!roomChecks.contains(room)){
+                if ((room.getLighting()) || (((LivingRoom) room).getTV())){
+                    roomChecks.add(room);
+                    isOn = true;
+                }
+            }
+        }
+        else if ((room instanceof Room)&&(room instanceof Bathroom)) {
+            // checks for bathroom
+            if (!roomChecks.contains(room)){
+                if((room.getLighting()) || (((Bathroom) room).getShower())){
+                    roomChecks.add(room);
+                    isOn = true;
+                }
+            }
+        }
+        else if ((room instanceof Room)&&(room instanceof Kitchen)) {
+            // checks for kitchen
+            if(!roomChecks.contains(room)){
+                if((room.getLighting()) || (((Kitchen) room).getStove())){
+                    roomChecks.add(room);
+                    isOn = true;
+                }
+            }
+        }
+        else if (room instanceof Room) {
+            // checks for room
+            if(!room.getLighting()){
+                roomChecks.add(room);
+                isOn = true;
+            }
+        }
+        else {
+            System.out.println("Room type is ambiguous");
+        }
+
+        return isOn;
     }
 
 }
