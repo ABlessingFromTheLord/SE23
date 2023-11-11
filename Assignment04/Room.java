@@ -43,7 +43,7 @@ public class Room {
         actionsArray[0] = "Switch Light";
         actionsArray[1] = "Enter Neighboring Room";
         actionsArray[2] = "Leave Room";
-        actions = Arrays.asList(actionsArray);
+        this.actions = Arrays.asList(actionsArray);
     }
 
     public void enter(){

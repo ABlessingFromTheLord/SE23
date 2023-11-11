@@ -22,6 +22,7 @@ public class Apartment {
         sc = new Scanner(System.in);
 
         System.out.println("Welcome to " +  this.getApartmentName() + " apartment!");
+        System.out.println("\nHINT: The unique thing in this apartment is the home theater system");
     }
 
     // Methods
@@ -34,13 +35,19 @@ public class Apartment {
         // Begin in hallway
         for (Room r: this.rooms) {
             if (r.getName().equals("Hallway")){
-                currentRoom = r;
+                this.currentRoom = r;
                 tour.push(r);
             }
         }
 
         currentRoom.enter();
         this.readAction();
+    }
+
+    public void enterRoom(Room room){
+        this.currentRoom = room;
+        this.tour.push(room);
+        this.currentRoom.enter();
     }
 
     public void leaveRoom() throws InterruptedException {
@@ -72,12 +79,15 @@ public class Apartment {
                 {
                     if(input == 1){
                         ((LivingRoom) this.currentRoom).switchTV();
+                        this.currentRoom.enter();
                     }
                     else if (input == 2) {
                         this.currentRoom.switchLight();
+                        this.currentRoom.enter();
                     }
                     else if (input == 3) {
                         ((LivingRoom) this.currentRoom).playHomeTheaterSystem();
+                        this.currentRoom.enter();
                     }
 
                     else if (input == 4) {
@@ -95,7 +105,8 @@ public class Apartment {
                     }
                 }
                 else {
-
+                    this.enterRoom(this.currentRoom.getNeighbors().get(input -1));
+                    chooseRooms = false;
                 }
 
 
@@ -103,66 +114,91 @@ public class Apartment {
 
             else if ((this.currentRoom instanceof Room) && (this.currentRoom instanceof Kitchen)) {
                 // Actions for kitchen
-                if(input == 1){
-                    this.currentRoom.switchLight();
-                }
-                else if (input == 2) {
-                    ((Kitchen) this.currentRoom).switchStove();
-                }
-                else if (input == 3) {
-                    System.out.println("\n Choose from neighbors: ");
-                    this.currentRoom.printNeighbors();
-                    this.readAction();
-                }
-                else if (input == 4) {
-                    this.leaveRoom();
+                if(!chooseRooms){
+                    if(input == 1){
+                        this.currentRoom.switchLight();
+                        this.currentRoom.enter();
+                    }
+                    else if (input == 2) {
+                        ((Kitchen) this.currentRoom).switchStove();
+                        this.currentRoom.enter();
+                    }
+                    else if (input == 3) {
+                        System.out.println("\n Choose from neighbors: ");
+                        chooseRooms = true;
+                        this.currentRoom.printNeighbors();
+                        this.readAction();
+                    }
+                    else if (input == 4) {
+                        this.leaveRoom();
+                    }
+                    else{
+                        System.out.println("Invalid input, please choose a number listed above");
+                        this.readAction();
+                    }
                 }
                 else{
-                    System.out.println("Invalid input, please choose a number listed above");
-                    this.readAction();
+                    this.enterRoom(this.currentRoom.getNeighbors().get(input -1));
+                    chooseRooms = false;
                 }
 
             }
 
             else if ((this.currentRoom instanceof Room) && (this.currentRoom instanceof Bathroom)) {
                 // Actions for  Bathroom
-                if(input == 1){
-                    this.currentRoom.switchLight();
-                }
-                else if (input == 2) {
-                    ((Bathroom) this.currentRoom).switchShower();
-                }
-                else if (input == 3) {
-                    System.out.println("\n Choose from neighbors: ");
-                    this.currentRoom.printNeighbors();
-                    this.readAction();
-                }
-                else if (input == 4) {
-                    this.leaveRoom();
+                if(!chooseRooms){
+                    if(input == 1){
+                        this.currentRoom.switchLight();
+                        this.currentRoom.enter();
+                    }
+                    else if (input == 2) {
+                        ((Bathroom) this.currentRoom).switchShower();
+                        this.currentRoom.enter();
+                    }
+                    else if (input == 3) {
+                        System.out.println("\n Choose from neighbors: ");
+                        chooseRooms = true;
+                        this.currentRoom.printNeighbors();
+                        this.readAction();
+                    }
+                    else if (input == 4) {
+                        this.leaveRoom();
+                    }
+                    else{
+                        System.out.println("Invalid input, please choose a number listed above");
+                        this.readAction();
+                    }
                 }
                 else{
-                    System.out.println("Invalid input, please choose a number listed above");
-                    this.readAction();
+                    this.enterRoom(this.currentRoom.getNeighbors().get(input -1));
+                    chooseRooms = false;
                 }
             }
             else
             {
-                // Actions for normal room
-                if(input == 1){
-                    this.currentRoom.switchLight();
-                    this.currentRoom.enter();
+                if(!chooseRooms){
+                    // Actions for normal room
+                    if(input == 1){
+                        this.currentRoom.switchLight();
+                        this.currentRoom.enter();
+                    }
+                    else if (input == 2) {
+                        System.out.println("\n Choose from neighbors: ");
+                        chooseRooms = true;
+                        this.currentRoom.printNeighbors();
+                        this.readAction();
+                    }
+                    else if (input == 3) {
+                        this.leaveRoom();
+                    }
+                    else {
+                        System.out.println("Invalid input, please choose a number listed above");
+                        this.readAction();
+                    }
                 }
-                else if (input == 2) {
-                    System.out.println("\n Choose from neighbors: ");
-                    this.currentRoom.printNeighbors();
-                    this.readAction();
-                }
-                else if (input == 3) {
-                    this.leaveRoom();
-                }
-                else {
-                    System.out.println("Invalid input, please choose a number listed above");
-                    this.readAction();
+                else{
+                    this.enterRoom(this.currentRoom.getNeighbors().get(input -1));
+                    chooseRooms = false;
                 }
             }
         }

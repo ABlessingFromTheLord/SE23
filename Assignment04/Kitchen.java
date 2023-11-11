@@ -25,23 +25,36 @@ public class Kitchen extends Room{
         actionsArray[1] = "Switch Stove";
         actionsArray[2] = "Enter Neighboring Room";
         actionsArray[3] = "Leave Room";
-        actions = Arrays.asList(actionsArray);
+        this.actions = Arrays.asList(actionsArray);
+    }
+
+    @Override
+    public void enter(){
+        System.out.println("You are in the " + this.getName() + "\n");
+        System.out.println("Choose action from the following actions: ");
+
+        int i = 1;
+        for (String s: actions){
+            System.out.println(i + " for " + s);
+            i++;
+        }
     }
 
     public void switchStove(){
         stove = !stove;
 
         if(stove){
+            System.out.println("Stove switched on");
             this.startTime = System.currentTimeMillis();
         }
         else{
-            System.out.println(this.calcEnergy() + " Watts were consumed by stove");
+            System.out.println("Stove switched off \n" + this.calcEnergy() + " Watts were consumed by stove");
         }
     }
 
     public double calcEnergy(){
-        long endTime = System.currentTimeMillis();
-        long duration = (endTime - this.startTime) / 3600000; // to get hours
+        long endTime = System.currentTimeMillis() * 1000000;
+        double duration = (endTime - this.startTime) / 3.6; // to get hours
         return (2000 * duration);
     }
 }
