@@ -8,6 +8,7 @@ public class Apartment {
     // Fields
     private String apartmentName;
     private Stack<Room> tour;
+    private boolean inApartment = true;
     private Scanner sc;
     private Room currentRoom;
     private ArrayList<Room> rooms;
@@ -45,8 +46,10 @@ public class Apartment {
 
         System.out.println("You left the " + currentRoom.getName());
         tour.pop();
+
         if (tour.empty()){
-            System.out.println("You left the apartment");
+            System.out.println(".... and the apartment, Goodbye!");
+            inApartment = false;
         }
         else {
             currentRoom = tour.peek();
@@ -59,7 +62,7 @@ public class Apartment {
     }
 
     public void readAction() throws InterruptedException {
-        while(true){
+        while(inApartment){
             int input = sc.nextInt();
 
             if((this.currentRoom instanceof Room) && (this.currentRoom instanceof LivingRoom)) {
@@ -82,8 +85,10 @@ public class Apartment {
                     this.leaveRoom();
                 }
                 else {
-                    break;
+                    System.out.println("Invalid input, please choose a number listed below");
+                    this.readAction();
                 }
+
 
             }
 
@@ -103,7 +108,8 @@ public class Apartment {
                     this.leaveRoom();
                 }
                 else{
-                    break;
+                    System.out.println("Invalid input, please choose a number listed above");
+                    this.readAction();
                 }
 
             }
@@ -124,7 +130,8 @@ public class Apartment {
                     this.leaveRoom();
                 }
                 else{
-                    break;
+                    System.out.println("Invalid input, please choose a number listed above");
+                    this.readAction();
                 }
             }
             else
@@ -142,10 +149,11 @@ public class Apartment {
                     this.leaveRoom();
                 }
                 else {
-                    break;
+                    System.out.println("Invalid input, please choose a number listed above");
+                    this.readAction();
                 }
             }
-
+            break;
         }
     }
 
