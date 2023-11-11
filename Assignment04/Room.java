@@ -25,6 +25,10 @@ public class Room {
         return this.name;
     }
 
+    public ArrayList<Room> getNeighbors() {
+        return this.neighbors;
+    }
+
     // Setters
     public void setNeighbors(Room room){
         this.neighbors.add(room);
