@@ -53,18 +53,25 @@ public class Apartment {
     }
 
     public void leaveRoom() throws InterruptedException {
+        // Check if all room conditions are safe
+        this.checkRoom(this.currentRoom);
 
         System.out.println("You left the " + currentRoom.getName());
         tour.pop();
 
         if (tour.empty()){
+            // cross-checking all conditions
+            if(!roomChecks.isEmpty()){
+                for (Room r: roomChecks) {
+                    r.notifier();
+                    System.out.println("\n");
+                }
+            }
+
             System.out.println(".... and the apartment, Goodbye!");
             inApartment = false;
         }
         else {
-            // Check if all room conditions are safe
-
-
             currentRoom = tour.peek();
             this.enter();
         }
@@ -209,15 +216,13 @@ public class Apartment {
         }
     }
 
-    public boolean checkRoom(Room room){
-        boolean isOn = false;
+    public void checkRoom(Room room){
 
         if((room instanceof Room)&&(room instanceof LivingRoom)){
             // checks for living room
             if(!roomChecks.contains(room)){
                 if ((room.getLighting()) || (((LivingRoom) room).getTV())){
                     roomChecks.add(room);
-                    isOn = true;
                 }
             }
         }
@@ -226,7 +231,6 @@ public class Apartment {
             if (!roomChecks.contains(room)){
                 if((room.getLighting()) || (((Bathroom) room).getShower())){
                     roomChecks.add(room);
-                    isOn = true;
                 }
             }
         }
@@ -235,7 +239,6 @@ public class Apartment {
             if(!roomChecks.contains(room)){
                 if((room.getLighting()) || (((Kitchen) room).getStove())){
                     roomChecks.add(room);
-                    isOn = true;
                 }
             }
         }
@@ -243,14 +246,11 @@ public class Apartment {
             // checks for room
             if(!room.getLighting()){
                 roomChecks.add(room);
-                isOn = true;
             }
         }
         else {
             System.out.println("Room type is ambiguous");
         }
-
-        return isOn;
     }
 
 }
