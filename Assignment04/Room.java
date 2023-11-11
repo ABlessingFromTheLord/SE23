@@ -31,8 +31,12 @@ public class Room {
 
     // Setters
     public void setNeighbors(Room room){
-        this.neighbors.add(room);
+        // Adding neighbor to this room if not yet neighbors
+        if(!this.neighbors.contains(room)){
+            this.neighbors.add(room);
+        }
 
+        // Adding neighbor to neighbor if not yet neighbors
         if(!room.neighbors.contains(this)){
             room.neighbors.add(this);
         }
