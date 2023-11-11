@@ -1,10 +1,14 @@
 package Assignment04;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LivingRoom extends Room{
     // Fields
+    private String name;
+    private boolean lighting;
     private boolean tv;
+    Iterable<String> actions;
     private ArrayList<Room> neighbors;
 
     // Constructor
@@ -12,9 +16,28 @@ public class LivingRoom extends Room{
         super(Name, Lighting);
 
         neighbors = new ArrayList<>();
+        this.init();
     }
 
     // Methods
+    public void init(){
+        String[] actionsArray = new String[5];
+        actionsArray[0] = "Switch tv";
+        actionsArray[1] = "Switch lighting";
+        actionsArray[2] = "Play Home theater music";
+        actionsArray[3] = "Enter neighboring room";
+        actionsArray[4] = "Leave room";
+        actions = Arrays.asList(actionsArray);
+    }
+
+    public void enter(){
+        int i = 1;
+        for (String s: actions){
+            System.out.println(i + " for " + s);
+            i++;
+        }
+    }
+
     public void switchTV(){
         tv = !tv;
     }
