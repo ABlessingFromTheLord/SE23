@@ -244,7 +244,7 @@ public class Apartment {
         }
         else if (room instanceof Room) {
             // checks for room
-            if(!room.getLighting()){
+            if(room.getLighting()){
                 roomChecks.add(room);
             }
         }

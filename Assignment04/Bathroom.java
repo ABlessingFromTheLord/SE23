@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Bathroom extends Room{
     // Fields
-    private boolean shower;
+    private boolean shower = false;
     Iterable<String> actions;
     private ArrayList<Room> neighbors;
 
@@ -45,5 +45,22 @@ public class Bathroom extends Room{
 
     public void switchShower(){
         shower = !shower;
+
+        if (shower){
+            System.out.println("Shower in the " + this.getName() + " is on \n");
+        }
+        else {
+            System.out.println("Shower in the " + this.getName() + " is off \n");
+        }
+    }
+
+    @Override
+    public void notifier(){
+        if (this.getLighting()){
+            System.out.println("Light is till on in the " + this.getName());
+        }
+        if(this.getShower()){
+            System.out.println("Shower is still on in the " + this.getName());
+        }
     }
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Kitchen extends Room{
     // Fields
-    private boolean stove;
+    private boolean stove = false;
     private ArrayList<Room> neighbors;
     Iterable<String> actions;
     private long startTime;
@@ -63,5 +63,15 @@ public class Kitchen extends Room{
         double duration = (endTime - this.startTime) / 3.6; // to get hours
         duration = Double.parseDouble(df.format(duration));
         return (2000 * duration);
+    }
+
+    @Override
+    public void notifier(){
+        if (this.getLighting()){
+            System.out.println("Light is till on in the " + this.getName());
+        }
+        if(this.getStove()){
+            System.out.println("Stove is still on in the " + this.getName());
+        }
     }
 }

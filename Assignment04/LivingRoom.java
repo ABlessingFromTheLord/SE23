@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class LivingRoom extends Room{
     // Fields
-    private boolean tv;
+    private boolean tv = false;
     Iterable<String> actions;
     private ArrayList<Room> neighbors;
 
@@ -57,15 +57,25 @@ public class LivingRoom extends Room{
 
     public void playHomeTheaterSystem() throws InterruptedException {
         System.out.println("Never gonna give you up");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         System.out.println("Never gonna let you down");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         System.out.println("Never gonna run around and desert you");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         System.out.println("Never gonna make you cry");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         System.out.println("Never gonna say goodbye");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         System.out.println("Never gonna tell a lie to hurt you");
+    }
+
+    @Override
+    public void notifier(){
+        if (this.getLighting()){
+            System.out.println("Light is till on in the " + this.getName());
+        }
+        if(this.getTV()){
+            System.out.println("TV is still on in the " + this.getName());
+        }
     }
 }
