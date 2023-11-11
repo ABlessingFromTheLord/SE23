@@ -66,6 +66,7 @@ public class Apartment {
                     r.notifier();
                     System.out.println("\n");
                 }
+                this.readAction();
             }
 
             System.out.println(".... and the apartment, Goodbye!");
@@ -217,12 +218,14 @@ public class Apartment {
     }
 
     public void checkRoom(Room room){
+        boolean permission = true;
 
         if((room instanceof Room)&&(room instanceof LivingRoom)){
             // checks for living room
             if(!roomChecks.contains(room)){
                 if ((room.getLighting()) || (((LivingRoom) room).getTV())){
                     roomChecks.add(room);
+                    permission = false;
                 }
             }
         }
@@ -231,6 +234,7 @@ public class Apartment {
             if (!roomChecks.contains(room)){
                 if((room.getLighting()) || (((Bathroom) room).getShower())){
                     roomChecks.add(room);
+                    permission = false;
                 }
             }
         }
@@ -239,6 +243,7 @@ public class Apartment {
             if(!roomChecks.contains(room)){
                 if((room.getLighting()) || (((Kitchen) room).getStove())){
                     roomChecks.add(room);
+                    permission = false;
                 }
             }
         }
@@ -246,11 +251,15 @@ public class Apartment {
             // checks for room
             if(room.getLighting()){
                 roomChecks.add(room);
+                permission = false;
             }
         }
         else {
             System.out.println("Room type is ambiguous");
         }
+
+        room.setLeave(permission);
+
     }
 
 }

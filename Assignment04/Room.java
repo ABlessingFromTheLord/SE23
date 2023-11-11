@@ -7,6 +7,7 @@ public class Room {
     // Fields
     private String name;
     private boolean lighting;
+    private boolean leave = true;
     Iterable<String> actions;
     private ArrayList<Room> neighbors;
 
@@ -23,6 +24,10 @@ public class Room {
     // Getters
     public boolean getLighting(){
         return this.lighting;
+    }
+
+    public boolean getLeave(){
+        return this.leave;
     }
 
     public String getName(){
@@ -44,6 +49,10 @@ public class Room {
         if(!room.neighbors.contains(this)){
             room.neighbors.add(this);
         }
+    }
+
+    public void setLeave(boolean permission){
+        this.leave = permission;
     }
 
     public void init(){
@@ -86,7 +95,8 @@ public class Room {
 
     public void notifier(){
         if (this.getLighting()){
-            System.out.println("Light is till on in the " + this.getName() + " cannot leave apartment");
+            leave = false;
+            System.out.println("Light is till on in the " + this.getName() + ", cannot leave apartment");
         }
     }
 }

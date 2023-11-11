@@ -72,10 +72,10 @@ public class LivingRoom extends Room{
     @Override
     public void notifier(){
         if (this.getLighting()){
-            System.out.println("Light is till on in the " + this.getName() + " cannot leave apartment");
+            System.out.println("Light is till on in the " + this.getName() + ", cannot leave apartment");
         }
         if(this.getTV()){
-            System.out.println("TV is still on in the " + this.getName() + " cannot leave apartment");
+            System.out.println("TV is still on in the " + this.getName() + ", cannot leave apartment");
         }
     }
 }
