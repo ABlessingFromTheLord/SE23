@@ -57,12 +57,10 @@ public class Kitchen extends Room{
         }
     }
 
-    public double calcEnergy(){
-        long endTime = System.currentTimeMillis() * 1000000;
-        DecimalFormat df = new DecimalFormat("#.##");
-        double duration = (endTime - this.startTime) / 3.6; // to get hours
-        duration = Double.parseDouble(df.format(duration));
-        return (2000 * duration);
+    public long calcEnergy(){
+        long endTime = System.currentTimeMillis();
+        long duration = (endTime - this.startTime); // to get hours
+        return (2000L * duration) / (3600000);
     }
 
     @Override
