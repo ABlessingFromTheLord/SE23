@@ -53,7 +53,7 @@ public class Kitchen extends Room{
             this.startTime = System.currentTimeMillis();
         }
         else{
-            System.out.println("Stove switched off \n" + this.calcEnergy() + " Watts were consumed by stove\n");
+            System.out.println("Stove switched off \n" + this.calcEnergy() + " kWh were consumed by stove\n");
         }
     }
 
