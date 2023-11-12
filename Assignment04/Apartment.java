@@ -56,9 +56,9 @@ public class Apartment {
         // Check if all room conditions are safe
         this.checkRoom(this.currentRoom);
 
-        System.out.println("You left the " + currentRoom.getName() + "\n");
         tour.pop();
 
+        // leaving apartment
         if (tour.empty()){
             // cross-checking all conditions
             if(!roomChecks.isEmpty()){
@@ -66,15 +66,18 @@ public class Apartment {
                     r.notifier();
                     System.out.println("\n");
                 }
-                this.readAction();
+                enterRoom(this.currentRoom);
             }
-
-            System.out.println(".... and the apartment, Goodbye!");
-            inApartment = false;
+            else{
+                System.out.println("You left the Hallway.... and the apartment, Goodbye!");
+                inApartment = false;
+            }
         }
+        // entering another room
         else {
-            currentRoom = tour.peek();
-            this.enter();
+            System.out.println("You left the " + currentRoom.getName() + "\n");
+            this.currentRoom = tour.peek();
+            this.currentRoom.enter();
         }
     }
 
@@ -218,48 +221,61 @@ public class Apartment {
     }
 
     public void checkRoom(Room room){
-        boolean permission = true;
-
         if((room instanceof Room)&&(room instanceof LivingRoom)){
             // checks for living room
             if(!roomChecks.contains(room)){
-                if ((room.getLighting()) || (((LivingRoom) room).getTV())){
+                if (!room.leaveChecks()){
                     roomChecks.add(room);
-                    permission = false;
+                }
+            }
+            else{
+                if(room.leaveChecks()){
+                    roomChecks.remove(room);
                 }
             }
         }
         else if ((room instanceof Room)&&(room instanceof Bathroom)) {
             // checks for bathroom
-            if (!roomChecks.contains(room)){
-                if((room.getLighting()) || (((Bathroom) room).getShower())){
+            if(!roomChecks.contains(room)){
+                if (!room.leaveChecks()){
                     roomChecks.add(room);
-                    permission = false;
+                }
+            }
+            else{
+                if(room.leaveChecks()){
+                    roomChecks.remove(room);
                 }
             }
         }
         else if ((room instanceof Room)&&(room instanceof Kitchen)) {
             // checks for kitchen
             if(!roomChecks.contains(room)){
-                if((room.getLighting()) || (((Kitchen) room).getStove())){
+                if (!room.leaveChecks()){
                     roomChecks.add(room);
-                    permission = false;
+                }
+            }
+            else{
+                if(room.leaveChecks()){
+                    roomChecks.remove(room);
                 }
             }
         }
         else if (room instanceof Room) {
             // checks for room
-            if(room.getLighting()){
-                roomChecks.add(room);
-                permission = false;
+            if(!roomChecks.contains(room)){
+                if (!room.leaveChecks()){
+                    roomChecks.add(room);
+                }
+            }
+            else{
+                if(room.leaveChecks()){
+                    roomChecks.remove(room);
+                }
             }
         }
         else {
             System.out.println("Room type is ambiguous");
         }
-
-        room.setLeave(permission);
-
     }
 
 }

@@ -95,8 +95,14 @@ public class Room {
 
     public void notifier(){
         if (this.getLighting()){
-            leave = false;
-            System.out.println("Light is till on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("Light is still on in the " + this.getName() + ", cannot leave apartment!");
         }
+        }
+
+    public boolean leaveChecks(){
+        if(this.getLighting()){
+            return false;
+        }
+        return true;
     }
 }

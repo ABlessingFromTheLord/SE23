@@ -66,16 +66,25 @@ public class LivingRoom extends Room{
         Thread.sleep(1000);
         System.out.println("Never gonna say goodbye");
         Thread.sleep(1000);
-        System.out.println("Never gonna tell a lie to hurt you");
+        System.out.println("Never gonna tell a lie to hurt you\n");
     }
 
     @Override
     public void notifier(){
         if (this.getLighting()){
-            System.out.println("Light is till on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("Light is still on in the " + this.getName() + ", cannot leave apartment!");
         }
         if(this.getTV()){
-            System.out.println("TV is still on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("TV is still on in the " + this.getName() + ", cannot leave apartment!");
         }
     }
+
+    @Override
+    public boolean leaveChecks(){
+        if(this.getLighting() || this.getTV()){
+            return false;
+        }
+        return true;
+    }
+
 }

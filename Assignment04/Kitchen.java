@@ -68,10 +68,18 @@ public class Kitchen extends Room{
     @Override
     public void notifier(){
         if (this.getLighting()){
-            System.out.println("Light is till on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("Light is still on in the " + this.getName() + ", cannot leave apartment!");
         }
         if(this.getStove()){
-            System.out.println("Stove is still on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("Stove is still on in the " + this.getName() + ", cannot leave apartment!");
         }
+    }
+
+    @Override
+    public boolean leaveChecks(){
+        if(this.getLighting() || this.getStove()){
+            return false;
+        }
+        return true;
     }
 }

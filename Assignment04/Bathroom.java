@@ -57,10 +57,18 @@ public class Bathroom extends Room{
     @Override
     public void notifier(){
         if (this.getLighting()){
-            System.out.println("Light is till on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("Light is still on in the " + this.getName() + ", cannot leave apartment!");
         }
         if(this.getShower()){
-            System.out.println("Shower is still on in the " + this.getName() + ", cannot leave apartment");
+            System.out.println("Shower is still on in the " + this.getName() + ", cannot leave apartment!");
         }
+    }
+
+    @Override
+    public boolean leaveChecks(){
+        if(this.getLighting() || this.getShower()){
+            return false;
+        }
+        return true;
     }
 }
